@@ -1,6 +1,11 @@
 require 'redmine'
 require 'redmine_auto_private/hooks'
 
+#patches for core classes
+ActionDispatch::Callbacks.to_prepare do
+  require_dependency 'redmine_auto_private/project_patch'
+end
+
 # Little hack for using the 'deface' gem in redmine:
 # - redmine plugins are not railties nor engines, so deface overrides in app/overrides/ are not detected automatically
 # - deface doesn't support direct loading anymore ; it unloads everything at boot so that reload in dev works
