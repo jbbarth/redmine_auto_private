@@ -1,6 +1,14 @@
 require 'redmine'
 require 'redmine_auto_private/hooks'
 
+# Little hack for using the 'deface' gem in redmine:
+# - redmine plugins are not railties nor engines, so deface overrides in app/overrides/ are not detected automatically
+# - deface doesn't support direct loading anymore ; it unloads everything at boot so that reload in dev works
+# - hack consists in adding "app/overrides" path of the plugin in Redmine's main #paths
+# TODO: see if it's complicated to turn a plugin into a Railtie or find something a bit cleaner
+Rails.application.paths["app/overrides"] ||= []
+Rails.application.paths["app/overrides"] << File.expand_path("../app/overrides", __FILE__)
+
 Redmine::Plugin.register :redmine_auto_private do
   name 'Redmine Auto Private plugin'
   description 'This plugin forces private issues for the projects you want'
