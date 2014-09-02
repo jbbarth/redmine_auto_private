@@ -6,14 +6,6 @@ ActionDispatch::Callbacks.to_prepare do
   require_dependency 'redmine_auto_private/project_patch'
 end
 
-# Temporarily reactivate this little hack for using the 'deface' gem in redmine:
-# - redmine plugins are not railties nor engines, so deface overrides in app/overrides/ are not detected automatically
-# - deface doesn't support direct loading anymore ; it unloads everything at boot so that reload in dev works
-# - hack consists in adding "app/overrides" path of the plugin in Redmine's main #paths
-# TODO: see if the redmine_base_deface plugin can be used in Redmine 2.6.x or 3.x when they're released, and then remove this hack
-Rails.application.paths["app/overrides"] ||= []
-Rails.application.paths["app/overrides"] << File.expand_path("../app/overrides", __FILE__)
-
 Redmine::Plugin.register :redmine_auto_private do
   name 'Redmine Auto Private plugin'
   description 'This plugin forces private issues for the projects you want'
