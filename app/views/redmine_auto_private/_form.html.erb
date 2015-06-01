@@ -1,5 +1,5 @@
 <p style="float:right;margin-right:0.5em;">
-  <% if @project.force_private_issues? %>
+  <% if @issue.project.force_private_issues? %>
     <%= hidden_field_tag 'issue[is_private]', 1 %>
     <span style="text-transform:uppercase;background:#d22;color:#fff;font-weight:bold;padding:2px 4px;font-size:90%;border-radius:2px;"><%= l(:field_is_private) %></span>
   <% else %>

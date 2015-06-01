@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe IssuesController do
+describe IssuesController, :type => :controller  do
   render_views
   fixtures :projects, :users, :roles, :members, :member_roles, :issues, :issue_statuses, :versions,
            :trackers, :projects_trackers, :issue_categories, :enabled_modules, :enumerations, :attachments,
@@ -20,15 +20,15 @@ describe IssuesController do
   it "should keeps checkbox if auto-private flag not set" do
     Issue.find(1).project.update_attribute(:force_private_issues, false)
     get :show, :id => 1
-    response.should be_success
-    assert_tag "input", :attributes => {:name => "issue[is_private]", :type => "checkbox"}
+    expect(response).to be_success
+    assert_select "input[name='issue[is_private]'][type='checkbox']"
   end
 
   it "should set private flag for issues" do
     Issue.find(1).project.update_attribute(:force_private_issues, true)
     get :show, :id => 1
-    response.should be_success
-    assert_no_tag "input", :attributes => {:name => "issue[is_private]", :type => "checkbox"}
-    assert_tag "input", :attributes => {:name => "issue[is_private]", :type => "hidden", :value => "1"}
+    expect(response).to be_success
+    assert_select "input[name='issue[is_private]'][type='checkbox']", false
+    assert_select "input[name='issue[is_private]'][type='hidden'][value='1']"
   end
 end
