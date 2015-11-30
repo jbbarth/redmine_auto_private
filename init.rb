@@ -1,8 +1,8 @@
 require 'redmine'
-require 'redmine_auto_private/hooks'
 
 #patches for core classes
 ActionDispatch::Callbacks.to_prepare do
+  require_dependency 'redmine_auto_private/hooks'
   require_dependency 'redmine_auto_private/project_patch'
 end
 
