@@ -14,7 +14,7 @@ describe IssuesController, :type => :controller  do
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     User.current = nil
-    @request.session[:user_id] = 1 #permissions are hard
+    @request.session[:user_id] = 2 #permissions are hard
   end
 
   it "should keeps checkbox if auto-private flag not set" do

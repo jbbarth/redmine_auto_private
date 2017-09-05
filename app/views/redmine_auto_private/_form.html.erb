@@ -1,7 +1,11 @@
 <p style="float:right;margin-right:0.5em;">
   <% if @issue.project.force_private_issues? %>
-    <%= hidden_field_tag 'issue[is_private]', 1 %>
     <span style="text-transform:uppercase;background:#d22;color:#fff;font-weight:bold;padding:2px 4px;font-size:90%;border-radius:2px;"><%= l(:field_is_private) %></span>
+    <% if User.current.admin? %>
+      <%= f.check_box :is_private, {:checked=>true, :no_label => true} %>
+    <% else %>
+      <%= hidden_field_tag 'issue[is_private]', 1 %>
+    <% end %>
   <% else %>
     <%= f.check_box :is_private, :no_label => true %>
     <label class="inline" for="issue_is_private" id="issue_is_private_label">
