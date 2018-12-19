@@ -1,4 +1,4 @@
-class AddForcePrivateIssuesToProjects < ActiveRecord::Migration
+class AddForcePrivateIssuesToProjects < ActiveRecord::Migration[4.2]
   def change
     add_column :projects, :force_private_issues, :boolean, :default => false
   end

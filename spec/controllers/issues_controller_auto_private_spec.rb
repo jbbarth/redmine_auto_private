@@ -11,23 +11,23 @@ describe IssuesController, :type => :controller  do
 
   before do
     @controller = IssuesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
+    @request    = ActionDispatch::TestRequest.create
+    @response   = ActionDispatch::TestResponse.new
     User.current = nil
     @request.session[:user_id] = 2 #permissions are hard
   end
 
   it "should keeps checkbox if auto-private flag not set" do
     Issue.find(1).project.update_attribute(:force_private_issues, false)
-    get :show, :id => 1
-    expect(response).to be_success
+    get :show, params: {:id => 1}
+    expect(response).to be_successful
     assert_select "input[name='issue[is_private]'][type='checkbox']"
   end
 
   it "should set private flag for issues" do
     Issue.find(1).project.update_attribute(:force_private_issues, true)
-    get :show, :id => 1
-    expect(response).to be_success
+    get :show, params: {:id => 1}
+    expect(response).to be_successful
     assert_select "input[name='issue[is_private]'][type='checkbox']", false
     assert_select "input[name='issue[is_private]'][type='hidden'][value='1']"
   end
