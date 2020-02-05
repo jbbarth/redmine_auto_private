@@ -1,5 +1,5 @@
 require 'spec_helper'
-require File.dirname(__FILE__) + '/../../lib/redmine_auto_private/project_patch'
+require 'redmine_auto_private/project_patch'
 
 describe "ProjectPatch" do
   fixtures :projects

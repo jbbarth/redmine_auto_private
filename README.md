@@ -29,7 +29,7 @@ Test status
 |master       | 4.1.0             | [![Build2][2]][5] |  
 |master       | 4.0.6             | [![Build3][3]][5] |
 
-[1]: https://travis-matrix-badges.herokuapp.com/repos/jbbarth/redmine_auto_private/branches/master/1?use_travis_com=true
-[2]: https://travis-matrix-badges.herokuapp.com/repos/jbbarth/redmine_auto_private/branches/master/2?use_travis_com=true
-[3]: https://travis-matrix-badges.herokuapp.com/repos/jbbarth/redmine_auto_private/branches/master/3?use_travis_com=true
+[1]: https://travis-matrix-badges.herokuapp.com/repos/jbbarth/redmine_auto_private/branches/master/1
+[2]: https://travis-matrix-badges.herokuapp.com/repos/jbbarth/redmine_auto_private/branches/master/2
+[3]: https://travis-matrix-badges.herokuapp.com/repos/jbbarth/redmine_auto_private/branches/master/3
 [5]: https://travis-ci.com/jbbarth/redmine_auto_private
