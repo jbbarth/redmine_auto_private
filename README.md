@@ -26,8 +26,8 @@ Test status
 |Plugin branch| Redmine Version   | Test Status       |
 |-------------|-------------------|-------------------|
 |master       | master            | [![Build1][1]][5] |  
-|master       | 4.1.0             | [![Build2][2]][5] |  
-|master       | 4.0.6             | [![Build3][3]][5] |
+|master       | 4.1.1             | [![Build2][2]][5] |  
+|master       | 4.0.7             | [![Build3][3]][5] |
 
 [1]: https://travis-matrix-badges.herokuapp.com/repos/jbbarth/redmine_auto_private/branches/master/1
 [2]: https://travis-matrix-badges.herokuapp.com/repos/jbbarth/redmine_auto_private/branches/master/2
