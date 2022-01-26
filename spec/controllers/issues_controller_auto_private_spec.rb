@@ -31,4 +31,51 @@ describe IssuesController, :type => :controller  do
     assert_select "input[name='issue[is_private]'][type='checkbox']", false
     assert_select "input[name='issue[is_private]'][type='hidden'][value='1']"
   end
+
+  describe "create private issue when the user does not have the permission to make it private" do
+
+    it "sets the issue as private if auto-private flag is activated" do
+      Role.find(1).remove_permission!(:set_issues_private)
+      Project.find(1).update_attribute(:force_private_issues, true)
+      expect {
+        post(
+              :create,
+              :params => {
+                :project_id => 1,
+                :issue => {
+                  :tracker_id => 1,
+                  :status_id => 2,
+                  :subject => 'test issue as private',
+                  :priority_id => 5,
+                  :start_date => '2022-01-25'
+                }
+              }
+        )
+      }.to change { Issue.count }.by(1)
+
+      expect(Issue.last().is_private).to be true
+    end
+
+    it "does not set the issue as private if auto-private flag is inactivated" do
+      Role.find(1).remove_permission!(:set_issues_private)
+      expect {
+        post(
+              :create,
+              :params => {
+                :project_id => 1,
+                :issue => {
+                  :tracker_id => 1,
+                  :status_id => 2,
+                  :subject => 'test issue as not private',
+                  :priority_id => 5,
+                  :start_date => '2022-01-25'
+                }
+              }
+        )
+      }.to change { Issue.count }.by(1)
+
+      expect(Issue.last().is_private).to be false
+    end
+
+  end
 end
