@@ -32,9 +32,9 @@ describe IssuesController, :type => :controller  do
     assert_select "input[name='issue[is_private]'][type='hidden'][value='1']"
   end
 
-  describe "create issue when a user who does not have the permission to create it" do
+  describe "create private issue when the user does not have the permission to make it private" do
 
-    it "Should set the issue as private if auto-private flag is activated" do
+    it "sets the issue as private if auto-private flag is activated" do
       Role.find(1).remove_permission!(:set_issues_private)
       Project.find(1).update_attribute(:force_private_issues, true)
       expect {
@@ -56,7 +56,7 @@ describe IssuesController, :type => :controller  do
       expect(Issue.last().is_private).to be true
     end
 
-    it "Should not set the issue as private if auto-private flag is inactivated" do
+    it "does not set the issue as private if auto-private flag is inactivated" do
       Role.find(1).remove_permission!(:set_issues_private)
       expect {
         post(
