@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'redmine_auto_private/project_patch'
 
 describe "ProjectPatch" do
   fixtures :projects
