@@ -11,8 +11,6 @@ describe IssuesController, :type => :controller  do
 
   before do
     @controller = IssuesController.new
-    @request    = ActionDispatch::TestRequest.create
-    @response   = ActionDispatch::TestResponse.new
     User.current = nil
     @request.session[:user_id] = 2 #permissions are hard
   end
