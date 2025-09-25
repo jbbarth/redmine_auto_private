@@ -30,5 +30,5 @@ Then :
 
 [1]: https://github.com/jbbarth/redmine_auto_private/actions/workflows/6_0_7.yml/badge.svg
 [2]: https://github.com/jbbarth/redmine_auto_private/actions/workflows/6_1_0.yml/badge.svg
-[4]: https://github.com/jbbarth/redmine_auto_private/actions/workflows/master.yml/badge.svg
+[3]: https://github.com/jbbarth/redmine_auto_private/actions/workflows/master.yml/badge.svg
 [5]: https://github.com/jbbarth/redmine_auto_private/actions
